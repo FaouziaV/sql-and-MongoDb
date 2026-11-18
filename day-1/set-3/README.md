@@ -6,7 +6,7 @@ This assignment models a hospital appointment desk using searching, sorting, dup
 
 | File | Description |
 |---|---|
-| `set3.py` | Supplied Python source code implementing all five tasks. |
+| `source_code.py` | Supplied Python source code implementing all five tasks. |
 | `output_and_complexity.md` | Actual console output, complexity table, data-structure rationale, and a typed selection-sort trace. |
 
 ## Requirements
