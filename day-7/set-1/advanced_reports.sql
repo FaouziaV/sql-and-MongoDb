@@ -1,115 +1,115 @@
 ----creating databse
 
---create database logistics_db;
---use logistics_db;
+create database logistics_db;
+use logistics_db;
 
 --creating tables
---CREATE TABLE hubs (
---    hub_id   INT PRIMARY KEY,
---    hub_name VARCHAR(100) NOT NULL,
---    city     VARCHAR(100)
---);
+CREATE TABLE hubs (
+   hub_id   INT PRIMARY KEY,
+   hub_name VARCHAR(100) NOT NULL,
+   city     VARCHAR(100)
+);
 
---CREATE TABLE carriers (
---    carrier_id   INT PRIMARY KEY,
---    carrier_name VARCHAR(100) NOT NULL
---);
+CREATE TABLE carriers (
+   carrier_id   INT PRIMARY KEY,
+   carrier_name VARCHAR(100) NOT NULL
+);
 
---CREATE TABLE customers (
---    customer_id   INT PRIMARY KEY,
---    customer_name VARCHAR(120) NOT NULL
---);
+CREATE TABLE customers (
+   customer_id   INT PRIMARY KEY,
+   customer_name VARCHAR(120) NOT NULL
+);
 
---CREATE TABLE employees (
---    employee_id   INT PRIMARY KEY,
---    employee_name VARCHAR(120) NOT NULL,
---    supervisor_id INT NULL,
---    CONSTRAINT FK_employees_supervisor
---        FOREIGN KEY (supervisor_id) REFERENCES employees(employee_id)
---);
+CREATE TABLE employees (
+   employee_id   INT PRIMARY KEY,
+   employee_name VARCHAR(120) NOT NULL,
+   supervisor_id INT NULL,
+   CONSTRAINT FK_employees_supervisor
+       FOREIGN KEY (supervisor_id) REFERENCES employees(employee_id)
+);
 
---CREATE TABLE shipments (
---    shipment_id        INT PRIMARY KEY,
---    customer_id        INT NOT NULL,
---    carrier_id         INT NOT NULL,
---    origin_hub_id      INT NOT NULL,
---    destination_hub_id INT NOT NULL,
---    shipment_date      DATETIME2 NOT NULL,
---    delivery_date      DATETIME2 NULL,
---    shipping_cost      DECIMAL(10,2) NOT NULL CHECK (shipping_cost >= 0),
---    status             VARCHAR(30) NOT NULL,
---    CONSTRAINT FK_shipments_customer FOREIGN KEY (customer_id)
---        REFERENCES customers(customer_id),
---    CONSTRAINT FK_shipments_carrier FOREIGN KEY (carrier_id)
---        REFERENCES carriers(carrier_id),
---    CONSTRAINT FK_shipments_origin_hub FOREIGN KEY (origin_hub_id)
---        REFERENCES hubs(hub_id),
---    CONSTRAINT FK_shipments_destination_hub FOREIGN KEY (destination_hub_id)
---        REFERENCES hubs(hub_id)
---);
---CREATE TABLE delivery_events (
---    event_id    INT PRIMARY KEY,
---    shipment_id INT NOT NULL,
---    event_time  DATETIME2 NOT NULL,
---    event_type  VARCHAR(60) NOT NULL,
---    notes       VARCHAR(MAX),
---    CONSTRAINT FK_delivery_events_shipment FOREIGN KEY (shipment_id)
---        REFERENCES shipments(shipment_id)
---);
+CREATE TABLE shipments (
+   shipment_id        INT PRIMARY KEY,
+   customer_id        INT NOT NULL,
+   carrier_id         INT NOT NULL,
+   origin_hub_id      INT NOT NULL,
+   destination_hub_id INT NOT NULL,
+   shipment_date      DATETIME2 NOT NULL,
+   delivery_date      DATETIME2 NULL,
+   shipping_cost      DECIMAL(10,2) NOT NULL CHECK (shipping_cost >= 0),
+   status             VARCHAR(30) NOT NULL,
+   CONSTRAINT FK_shipments_customer FOREIGN KEY (customer_id)
+       REFERENCES customers(customer_id),
+   CONSTRAINT FK_shipments_carrier FOREIGN KEY (carrier_id)
+       REFERENCES carriers(carrier_id),
+   CONSTRAINT FK_shipments_origin_hub FOREIGN KEY (origin_hub_id)
+       REFERENCES hubs(hub_id),
+   CONSTRAINT FK_shipments_destination_hub FOREIGN KEY (destination_hub_id)
+       REFERENCES hubs(hub_id)
+);
+CREATE TABLE delivery_events (
+   event_id    INT PRIMARY KEY,
+   shipment_id INT NOT NULL,
+   event_time  DATETIME2 NOT NULL,
+   event_type  VARCHAR(60) NOT NULL,
+   notes       VARCHAR(MAX),
+   CONSTRAINT FK_delivery_events_shipment FOREIGN KEY (shipment_id)
+       REFERENCES shipments(shipment_id)
+);
 
 
 --inserting datas
---INSERT INTO hubs (hub_id, hub_name, city) VALUES
---(1, 'Coimbatore Hub', 'Coimbatore'),
---(2, 'Chennai Hub', 'Chennai'),
---(3, 'Bengaluru Hub', 'Bengaluru'),
---(4, 'Hyderabad Hub', 'Hyderabad'),
---(5, 'Kochi Hub', 'Kochi');
+INSERT INTO hubs (hub_id, hub_name, city) VALUES
+(1, 'Coimbatore Hub', 'Coimbatore'),
+(2, 'Chennai Hub', 'Chennai'),
+(3, 'Bengaluru Hub', 'Bengaluru'),
+(4, 'Hyderabad Hub', 'Hyderabad'),
+(5, 'Kochi Hub', 'Kochi');
 
---INSERT INTO carriers (carrier_id, carrier_name) VALUES
---(1, 'Swift Express'),
---(2, 'BlueLine Logistics'),
---(3, 'SafeRoute Cargo'),
---(4, 'Metro Express');
+INSERT INTO carriers (carrier_id, carrier_name) VALUES
+(1, 'Swift Express'),
+(2, 'BlueLine Logistics'),
+(3, 'SafeRoute Cargo'),
+(4, 'Metro Express');
 
---INSERT INTO customers (customer_id, customer_name) VALUES
---(1, 'Apex Retail'),
---(2, 'GreenMart'),
---(3, 'Nova Electronics'),
---(4, 'Urban Stores'),
---(5, 'Prime Foods');
+INSERT INTO customers (customer_id, customer_name) VALUES
+(1, 'Apex Retail'),
+(2, 'GreenMart'),
+(3, 'Nova Electronics'),
+(4, 'Urban Stores'),
+(5, 'Prime Foods');
 
---INSERT INTO employees (employee_id, employee_name, supervisor_id) VALUES
---(1, 'Arun Kumar', NULL),
---(2, 'Divya Ravi', 1),
---(3, 'Karthik S', 1),
---(4, 'Meena P', 2),
---(5, 'Rahul N', 2);
+INSERT INTO employees (employee_id, employee_name, supervisor_id) VALUES
+(1, 'Arun Kumar', NULL),
+(2, 'Divya Ravi', 1),
+(3, 'Karthik S', 1),
+(4, 'Meena P', 2),
+(5, 'Rahul N', 2);
 
---INSERT INTO shipments
---(shipment_id, customer_id, carrier_id, origin_hub_id, destination_hub_id,
--- shipment_date, delivery_date, shipping_cost, status)
---VALUES
---(101, 1, 1, 1, 2, '2026-10-01T09:00:00', '2026-10-05T12:00:00', 850.00, 'Delivered'),
---(102, 1, 2, 2, 3, '2026-10-02T10:00:00', '2026-10-03T15:00:00', 620.00, 'Delivered'),
---(103, 2, 1, 1, 3, '2026-10-04T08:00:00', '2026-10-08T11:00:00', 920.00, 'Delivered'),
---(104, 2, 3, 3, 4, '2026-10-05T11:00:00', '2026-10-06T16:00:00', 700.00, 'Delivered'),
---(105, 3, 2, 2, 4, '2026-10-06T07:00:00', '2026-10-10T18:00:00', 1100.00, 'Delivered'),
---(106, 3, 1, 4, 1, '2026-10-07T09:00:00', '2026-10-08T14:00:00', 780.00, 'Delivered'),
---(107, 4, 3, 3, 2, '2026-10-08T10:00:00', '2026-10-12T10:00:00', 990.00, 'Delivered'),
---(108, 4, 4, 1, 4, '2026-10-09T12:00:00', NULL, 1250.00, 'In Transit'),
---(109, 5, 2, 2, 1, '2026-10-10T08:00:00', '2026-10-11T12:00:00', 540.00, 'Delivered'),
---(110, 5, 4, 4, 3, '2026-10-11T09:00:00', NULL, 680.00, 'In Transit'),
---(111, 1, 3, 3, 1, '2026-10-12T10:00:00', '2026-10-13T11:00:00', 760.00, 'Delivered');
+INSERT INTO shipments
+(shipment_id, customer_id, carrier_id, origin_hub_id, destination_hub_id,
+shipment_date, delivery_date, shipping_cost, status)
+VALUES
+(101, 1, 1, 1, 2, '2026-10-01T09:00:00', '2026-10-05T12:00:00', 850.00, 'Delivered'),
+(102, 1, 2, 2, 3, '2026-10-02T10:00:00', '2026-10-03T15:00:00', 620.00, 'Delivered'),
+(103, 2, 1, 1, 3, '2026-10-04T08:00:00', '2026-10-08T11:00:00', 920.00, 'Delivered'),
+(104, 2, 3, 3, 4, '2026-10-05T11:00:00', '2026-10-06T16:00:00', 700.00, 'Delivered'),
+(105, 3, 2, 2, 4, '2026-10-06T07:00:00', '2026-10-10T18:00:00', 1100.00, 'Delivered'),
+(106, 3, 1, 4, 1, '2026-10-07T09:00:00', '2026-10-08T14:00:00', 780.00, 'Delivered'),
+(107, 4, 3, 3, 2, '2026-10-08T10:00:00', '2026-10-12T10:00:00', 990.00, 'Delivered'),
+(108, 4, 4, 1, 4, '2026-10-09T12:00:00', NULL, 1250.00, 'In Transit'),
+(109, 5, 2, 2, 1, '2026-10-10T08:00:00', '2026-10-11T12:00:00', 540.00, 'Delivered'),
+(110, 5, 4, 4, 3, '2026-10-11T09:00:00', NULL, 680.00, 'In Transit'),
+(111, 1, 3, 3, 1, '2026-10-12T10:00:00', '2026-10-13T11:00:00', 760.00, 'Delivered');
 
---INSERT INTO delivery_events (event_id, shipment_id, event_time, event_type, notes) VALUES
---(1, 101, '2026-10-01T09:00:00', 'Picked Up', 'Collected from sender'),
---(2, 101, '2026-10-03T13:00:00', 'In Transit', 'Reached sorting facility'),
---(3, 101, '2026-10-05T12:00:00', 'Delivered', 'Received by customer'),
---(4, 103, '2026-10-04T08:00:00', 'Picked Up', 'Shipment collected'),
---(5, 103, '2026-10-08T11:00:00', 'Delivered', 'Delivery completed'),
---(6, 108, '2026-10-09T12:00:00', 'Picked Up', 'Collected from sender'),
---(7, 108, '2026-10-10T17:00:00', 'In Transit', 'Departed origin hub');
+INSERT INTO delivery_events (event_id, shipment_id, event_time, event_type, notes) VALUES
+(1, 101, '2026-10-01T09:00:00', 'Picked Up', 'Collected from sender'),
+(2, 101, '2026-10-03T13:00:00', 'In Transit', 'Reached sorting facility'),
+(3, 101, '2026-10-05T12:00:00', 'Delivered', 'Received by customer'),
+(4, 103, '2026-10-04T08:00:00', 'Picked Up', 'Shipment collected'),
+(5, 103, '2026-10-08T11:00:00', 'Delivered', 'Delivery completed'),
+(6, 108, '2026-10-09T12:00:00', 'Picked Up', 'Collected from sender'),
+(7, 108, '2026-10-10T17:00:00', 'In Transit', 'Departed origin hub');
 
 --Shipments delayed by more than two days, with carrier names.
 --INNER JOIN: only matching carrier records are required.
