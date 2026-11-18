@@ -6,7 +6,7 @@ This assignment reviews a retail bank's card transactions using searching, sorti
 
 | File | Description |
 |---|---|
-| `set2.py` | Supplied Python source code implementing the five tasks. |
+| `source_code.py` | Supplied Python source code implementing the five tasks. |
 | `output_and_complexity.md` | Actual console output from the supplied code, plus the complexity table and data-structure rationale. |
 
 ## Requirements
