@@ -75,7 +75,3 @@ Here, `n` is the number of IDs or transactions, and `capacity` is the fixed size
 - Task 3 checks the absolute time difference against 60 seconds for matching `(account, amount, merchant)` keys. The inner loop means worst-case time can become quadratic if many transactions share the same key.
 - Task 4 implements both structures directly with fixed-size arrays; no library collection is used.
 - Task 5 compares recursive divide-and-conquer with a brute-force scan. Both return the same minimum and maximum for the supplied amount list.
-
-## Stability
-
-A stable sort keeps records with equal sort keys in their original relative order. This matters for statements because transactions sharing a timestamp remain in their input order, rather than being arbitrarily reordered. The supplied insertion sort and merge sort are stable for the date key.
