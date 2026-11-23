@@ -48,8 +48,6 @@ day-9/
 ## Technologies Used
 - Microsoft SQL Server
 - SQL (Views, Stored Procedures, Functions, Transactions, Cursors)
-- MongoDB 8.0
-- MongoDB Aggregation Pipeline and Views
 
 
 ## How to Run
