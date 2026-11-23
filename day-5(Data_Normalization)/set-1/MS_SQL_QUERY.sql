@@ -23,10 +23,9 @@ Product stores only the corresponding foreign keys.
 --database creation
 
 create database RetailInventoryDB;
-GO
 
 use RetailInventoryDB
-GO
+
 
 --tables creation
 
