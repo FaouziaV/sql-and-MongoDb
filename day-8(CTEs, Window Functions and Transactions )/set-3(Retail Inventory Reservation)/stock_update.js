@@ -1,6 +1,3 @@
-// ============================================
-// RETAIL INVENTORY - STOCK RESERVATION
-// ============================================
 
 // 1. CREATE / USE DATABASE
 use RetailInventoryDB;
