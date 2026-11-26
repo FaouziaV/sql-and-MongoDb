@@ -1,4 +1,4 @@
-/* SET 2 – Execute after triggers.sql */
+
 SET NOCOUNT ON;
 GO
 
